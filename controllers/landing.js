@@ -2,7 +2,7 @@ var player1, player2, total_score;
 
 exports.get_landing = (req, res, next) => {
     res.render('landing', {
-        title: "The Pig Game"
+        title: "Pig Game"
     })
 };
 

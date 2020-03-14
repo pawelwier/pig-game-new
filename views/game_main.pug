@@ -1,16 +1,32 @@
 doctype html
 html
 head
+  style
+      include ../public/styles/main.css
 
 body
-  p Gracz 1: #{player1}
+  p 
+    .name#name0 #{player1}: 
+      span.score#score0 0
+    div seria: 
+      span#current0 0
+  p 
+    .name#name1 #{player2}: 
+      span.score#score1 0
+    div seria: 
+      span#current1 0
     br
-    div#score1 0
-    div#score_total1 0
-  p Gracz 2: #{player2}
+    br
+    div Wypadlo: 
+      span#dice_current 0
   .buttons
     button#roll_dice Rzucaj
     button#hold Starczy
-  p Gramy do #{total_score}
+    div#one_point Jedynka!
+  p Gramy do 
+    span#total_points #{total_score}
+  #winnerFrame
+    #winner x
+    button#newGame Jeszcze jeszcze
 script
   include ../public/javascripts/game_run.js

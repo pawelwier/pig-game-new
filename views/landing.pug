@@ -3,12 +3,15 @@ html
 head
 
 body
-  p Hello, this is #{title}
+  p Halo halo witamy w #{title}
   br
   form(action="/", method="POST")
+    div Kto gra?
     input(name="player1", type="text", placeholder="Gracz 1")
     br
     input(name="player2", type="text", placeholder="Gracz 2")
     br
+    br
+    div Do ilu gramy?
     input(name="total_score", type="text", placeholder="50")
     button(type="submit") Gramy
