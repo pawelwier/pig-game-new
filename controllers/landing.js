@@ -1,4 +1,4 @@
-var player1, player2, score1, score2, total_score;
+var player1, player2, total_score, scores_db_full;
 
 var db_res = require('../db/scores_db');
 
@@ -21,7 +21,6 @@ exports.get_game_main = (req, res, next) => {
         player2 : player2,
         total_score : total_score || 50
     });
-    console.log('asdf');
 };
 
 exports.post_game_scores = (req, res, next) => {
@@ -33,7 +32,14 @@ exports.post_game_scores = (req, res, next) => {
     var d = new Date().toISOString().slice(0, 19).replace('T', ' ');
     var addResults = db_res.insertResults;
     addResults(p1, p2, sc1, sc2, tot, d);
-    console.log("SC1: " + req.body.score0_export);
-    console.log("SC2: " + req.body.score1_export);
     res.redirect('back');
+};
+
+exports.get_scores_history = (req, res, next) => {
+
+    db_res.refreshScores();
+
+    res.render("score_history", {
+        scores : db_res.full_score_list
+    });
 };

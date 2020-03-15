@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 var db_result;
+var full_score_list = [];
 
 var connection = mysql.createConnection({
     host : '127.0.0.1',
@@ -13,11 +14,26 @@ connection.connect((err) => {
     console.log('Connected to DB.');
 });
 
-connection.query('SELECT * FROM pig_game_scores', (err, rows) => {
-    if (err) throw err;
-    db_result = rows;
-    console.log('Data from db: ' + rows);
-});
+function refreshScores() {
+    full_score_list = [];
+
+    connection.query('SELECT * FROM pig_game_scores', (err, rows) => {
+        if (err) throw err;
+
+        for (var i = 0; i < rows.length; i++) {
+            var obj = {};
+            obj.player1 = rows[i].player1;
+            obj.player2 = rows[i].player2;
+            obj.score1 = rows[i].score1;
+            obj.score2 = rows[i].score2;
+            obj.total_score = rows[i].total_score;
+            var date_display = rows[i].game_date;
+            obj.game_date = date_display.toString().slice(3, 24);
+            full_score_list.push(obj);
+        }
+    });
+}
+
 function insertResults(name1, name2, score1, score2, score_total, date) {
     var post = {
         player1 : name1,
@@ -32,10 +48,11 @@ function insertResults(name1, name2, score1, score2, score_total, date) {
         console.log("Inserted data " + res);
     });
 
-    connection.end((err) => {
-        console.log('Finished with grace');
-    });
 }
+
+refreshScores();
 
 module.exports.test_data = db_result;
 module.exports.insertResults = insertResults;
+module.exports.full_score_list = full_score_list;
+module.exports.refreshScores = refreshScores;

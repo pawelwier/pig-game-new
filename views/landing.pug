@@ -7,11 +7,16 @@ body
   br
   form(action="/", method="POST")
     div Kto gra?
-    input(name="player1", type="text", placeholder="Gracz 1")
+    input#player_input1(name="player1", type="text", placeholder="Gracz 1")
     br
-    input(name="player2", type="text", placeholder="Gracz 2")
+    input#player_input2(name="player2", type="text", placeholder="Gracz 2")
     br
     br
     div Do ilu gramy?
     input(name="total_score", type="text", placeholder="50")
-    button(type="submit") Gramy
+    button#start_game(type="submit") Gramy
+  br
+  br
+  button#go_to_scores Wyniki
+script
+  include ../public/javascripts/landing_page.js

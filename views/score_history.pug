@@ -1,0 +1,28 @@
+doctype html
+html
+head
+  style
+      include ../public/styles/scores.css
+body
+  h3 Wyniki
+  table#score_table
+    tr
+      th Gracz 1
+      th Gracz 2
+      th Wynik 1
+      th Wynik 2
+      th Do ilu
+      th Data
+    tbody
+      each score in scores
+        tr
+          td= score.player1
+          td= score.player2
+          td= score.score1
+          td= score.score2
+          td= score.total_score
+          td= score.game_date
+  br
+  button#go_main Powrot
+script
+  include ../public/javascripts/scores_page.js

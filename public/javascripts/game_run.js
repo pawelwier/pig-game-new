@@ -12,6 +12,7 @@ maxScore = parseInt(document.getElementById('total_points').textContent);
 // document.querySelector('.dice').style.display = 'none';
 document.querySelector('#winnerFrame').style.display = 'none';
 document.querySelector('#dice_current').style.display = 'none';
+document.querySelector('#add_score').style.display = 'none';
 
 document.querySelector('#name0').style.fontWeight = 'bold';
 
@@ -104,6 +105,7 @@ document.getElementById('hold').addEventListener('click', () => {
             // winner.textContent = 'Wygral gracz nr ' + (activePlayer + 1);
             winner.textContent = 'Wygral(a) ' + document.getElementById('name'  + activePlayer).textContent;
             buttons.style.display = 'none';
+            document.querySelector('#add_score').style.display = 'block';
 
             populateExport();
 

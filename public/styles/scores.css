@@ -1,0 +1,8 @@
+#score_table th {
+    padding: 10px;
+    background-color: beige;
+}
+
+#score_table tr {
+    text-align: center;
+}

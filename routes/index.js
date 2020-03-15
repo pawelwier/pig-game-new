@@ -10,4 +10,6 @@ router.post('/', landing.post_landing);
 router.get('/game', landing.get_game_main);
 router.post('/game', landing.post_game_scores);
 
+router.get('/scores', landing.get_scores_history);
+
 module.exports = router;
