@@ -1,15 +1,3 @@
-// console.log("game is on");
-
-// var roll_button = document.getElementById('roll_dice');
-// var score_1 = document.getElementById('score1');
-
-// var throw_dice = Math.floor(Math.random() * 6) + 1;
-
-// roll_button.addEventListener('click', () => {
-//     console.log('click');
-//     score_1 = throw_dice;
-// });
-
 var scores, roundScore, activePlayer, maxScore;
 
 scores = [0,0];
@@ -62,6 +50,11 @@ function setActiveAgain(){
     switchBold();
 }
 
+function populateExport() {
+    document.getElementById("score0_export").value = x_zero;
+    document.getElementById("score1_export").value = y_zero;
+}
+
 
 document.querySelector('#roll_dice').addEventListener('click', () => {
 
@@ -108,8 +101,12 @@ document.getElementById('hold').addEventListener('click', () => {
 
     if (y_zero >= maxScore || x_zero >= maxScore) {
             winnerFrame.style.display = 'block';
-            winner.textContent = 'Wygral gracz nr ' + (activePlayer + 1);
+            // winner.textContent = 'Wygral gracz nr ' + (activePlayer + 1);
+            winner.textContent = 'Wygral(a) ' + document.getElementById('name'  + activePlayer).textContent;
             buttons.style.display = 'none';
+
+            populateExport();
+
            // winnerImg.style.width = '200px';
             // winnerImg.style.display = 'block';
             // winnerImg.src = 'img-' + activePlayer + '.jpg';

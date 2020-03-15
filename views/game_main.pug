@@ -27,6 +27,14 @@ body
     span#total_points #{total_score}
   #winnerFrame
     #winner x
+    br
     button#newGame Jeszcze jeszcze
+  br
+  br
+  #db_export
+    form(action="/game", method="POST")
+      input#score0_export.score_input(name="score0_export")
+      input#score1_export.score_input(name="score1_export")
+      button#add_score(type="submit") Dodaj wynik
 script
   include ../public/javascripts/game_run.js

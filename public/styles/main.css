@@ -18,3 +18,7 @@ body {
 .name {
     font-size: 1.6em;
 }
+
+.score_input {
+    display: none;
+}
