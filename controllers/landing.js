@@ -35,5 +35,5 @@ exports.post_game_scores = (req, res, next) => {
     addResults(p1, p2, sc1, sc2, tot, d);
     console.log("SC1: " + req.body.score0_export);
     console.log("SC2: " + req.body.score1_export);
-    res.end();
+    res.redirect('back');
 };
